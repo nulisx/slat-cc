@@ -147,3 +147,10 @@ For all features, go to [docs](https://slat.cc/docs)
   ├── tests/casino
   └── ...
 ```
+
+### Showcase (old)
+
+Small showcase of some features such as tilting card, audio visualizer and thunder effect.
+
+https://github.com/user-attachments/assets/250a19aa-0b7a-48ed-9dfb-a129b6cf737f
+
