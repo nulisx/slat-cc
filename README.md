@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve personally developed and designed,
+Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve personally developed and designed.
 </p>
 <p align="center">
   <a href="https://www.linkedin.com/in/maria-nguyen-le">
@@ -33,14 +33,14 @@ Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve p
 
 <hr />
 
-### Introduction
+## Introduction
 
 In this repository, you'll find **snippets of code** from my development of Slat.cc inside the `/snippets` folder.  
 Additionally, the `/images` folder contains **actual screenshots** of various pages, features and UI elements of the platform.
 
 Further down, you can explore the **actual (or nearly complete) folder structure** of the project.
 
-### Techstack
+## Techstack
 
 - nextjs 15 - framework
 - typescript - language
@@ -53,7 +53,7 @@ Further down, you can explore the **actual (or nearly complete) folder structure
 - stripe - payments
 - vitest - tests
 
-### Features (technical)
+## Features (technical)
 
 - server-side rendering (SSR)
 - static site genetation (SSG)
@@ -80,7 +80,7 @@ Further down, you can explore the **actual (or nearly complete) folder structure
 
 For all features, go to [docs](https://slat.cc/docs)
 
-### Project Structure
+## Project Structure
 
 ```
   ├── app
