@@ -19,6 +19,26 @@ import {
   fetchIsUserPremium,
 } from "@/lib/application/users/actions";
 
+// usage example in app/(dashboard)/dashboard/templates/discover/page.tsx
+
+import type { FilterSearchParams } from "@/lib/application/templates/types";
+import { TemplatesPage } from "../_components/templates-page";
+
+export default async function DiscoverTemplatesPage(props: {
+  searchParams: Promise<FilterSearchParams>;
+}) {
+  const filters = await props.searchParams;
+
+  const initialFilters: FilterSearchParams = {
+    page: 1,
+    sort: "newest",
+    public: true,
+    ...filters,
+  };
+
+  return <TemplatesPage filters={initialFilters} discover />;
+}
+
 // app/(dashboard)/dashboard/templates/_components/templates-page.tsx
 
 export function TemplatesPage({
