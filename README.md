@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/22fbdb42-f2cb-4324-8d61-39435530997d)
+<img width="1892" height="941" alt="hero" src="https://github.com/user-attachments/assets/336d92a3-da70-4be9-a036-167c6624dbff" />
 
 <p align="center">
   <a href="https://slat.cc/">
@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve personally developed and designed.
+Slat.cc is a feature-rich link-in-bio tool with over 80,000 users.
 </p>
 <p align="center">
   <a href="https://www.linkedin.com/in/maria-nguyen-le">
@@ -21,10 +21,10 @@ Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve p
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#introduction">About The Project</a>
+      <a href="#introduction">Intro</a>
     </li>
     <li>
-      <a href="#techstack">Getting Started</a>
+      <a href="#techstack">Techstack</a>
     </li>
     <li><a href="#features-technical">Features</a></li>
     <li><a href="#project-structure">Project Structure</a></li>
@@ -35,10 +35,11 @@ Slat.cc is a feature-rich link-in-bio tool with over 70,000 users, that I’ve p
 
 ## Introduction
 
-In this repository, you'll find **snippets of code** from my development of Slat.cc inside the `/snippets` folder.  
+In this repository, you'll find **snippets of code** from my solo development and design of slat.cc.
 Additionally, the `/images` folder contains **actual screenshots** of various pages, features and UI elements of the platform.
+This repo doesn’t include full business logic or anything sensitive - just the core structure and my coding approach.
 
-Further down, you can explore the **actual (or nearly complete) folder structure** of the project.
+Further down, you can explore the **the nearly complete folder structure** of the project.
 
 ## Techstack
 
@@ -53,30 +54,37 @@ Further down, you can explore the **actual (or nearly complete) folder structure
 - stripe - payments
 - vitest - tests
 
-## Features (technical)
+## Features
 
 - server-side rendering (SSR)
 - static site genetation (SSG)
 - incremental static regeneration (ISR)
-- dynamic generated opengraph images
-- discord webhooks
+- middleware-based routing - subdomains e.g. docs.slat.cc
+- react server components (RSC)
+- streaming / partial loading (suspense + loading.tsx)
+- dynamic routing with catch-all and optional segments
+- nested layouts and parallel routes
+- multi-tenancy e.g. maria.slat.cc
+- file-based and dynamic metadata generation
+- mutations via server actions
+- tag-based revalidation (on-demand cache updates)
+- login/register with discord oauth
+- dynamic og:image generation (custom Open Graph API)
+- webhooks for syncing external actions
 - rich text editor
-- advanced effects/animations created with canvas
-- media proxy (cors)
-- file uploading
-- integrations and embeds with spotify, discord, soundcloud, roblox, yt, twitch, steam
+- 30+ advanced effects/animations created with css and framer-motion
+- media proxy
+- file uploading (images, audio, videos)
+- integrated with spotify, discord, soundcloud, roblox, yt, twitch, steam, deezer, iconify-icons, github api
 - reordering links, widgets, badges etc.
-- promise toasts
-- debounced auto save forms
-- metadata customization
-- google fonts integration
+- promise-based toast system (auto cancel / status updates)
 - analytics (top links, total and unique views, audience geo)
-- discord linking (oauth)
 - admin dashboard for user management and editing articles
-- integrates with deezer api for custom music player widget
-- live biolink preview (zustand)
-- audio visualizer (analyzes and visualizes audio frequency)
-- responsive modals (native drawers for mobile and dialog for desktop)
+- state sync with zustand - instant live biolink preview feature
+- analyze and visualize audio frequency - audio visualizer feature
+- type-safe forms with zod + react-hook-form
+- responsive modals – native drawers for mobile, dialogs on desktop
+- partial use of shadcn/ui for consistent styling and accessible primitives
 
 For all features, go to [docs](https://slat.cc/docs)
 
@@ -84,18 +92,17 @@ For all features, go to [docs](https://slat.cc/docs)
 
 ```
   ├── app
-  │   ├── (casino)
-  │   ├── (dashboard)
-  │   ├── (docs)/docs
-  │   │   └── [[...slug]]
-  │   ├── (profiles)
-  │   ├── (website)
+  │   ├── [username]
+  │   │   ├── page.tsx
+  │   │   └── opengraph-image.tsx
+  │   ├── (root)
   │   │   ├── (auth)
-  │   │   ├── (marketing)
-  │   │   └── (onboarding)
-  │   │       ├── layout.tsx
-  │   │       └── template.tsx
+  │   │   └── (marketing)
   │   ├── api
+  │   ├── casino
+  │   ├── dashboard
+  │   ├── docs
+  │   │   └── [[...slug]]
   │   ├── error.tsx
   │   ├── not-found.tsx
   │   ├── providers.tsx
@@ -105,43 +112,45 @@ For all features, go to [docs](https://slat.cc/docs)
   │   └── ...
   ├── components
   │   ├── biolink
-  │   ├── casino
-  │   ├── core
+  │   ├── ui
   │   ├── editor
   │   ├── layout
   │   ├── form
   │   └── email
-  ├── hooks
-  ├── utils
-  │   ├── functions
-  │   ├── validations
-  │   ├── constants
-  │   └── index.ts
   ├── lib
-  │   ├── application
-  │   │   ├── metadata
-  │   │   ├── tracks
-  │   │   ├── widgets
-  │   │   ├── analytics
+  │   ├── analytics
+  │   ├── data
+  │   │   ├── actions
+  │   │   ├── biolink
+  │   │   ├── coments
+  │   │   ├── embeds
+  │   │   ├── users
   │   │   │   ├── actions
+  │   │   │   │   │  ├── select-user.ts
+  │   │   │   │   │  ├── update-user.ts
+  │   │   │   │   │  ├── index.ts
+  │   │   │   │   │  ├── ...
   │   │   │   ├── constants.ts
-  │   │   │   ├── format.ts
-  │   │   │   ├── types.ts
+  │   │   │   ├── schemas.ts
   │   │   │   └── utils.ts
   │   │   ├── orders
   │   │   ├── templates
+  │   │   ├── links
+  │   │   ├── tracks
+  │   │   ├── metadata
   │   │   └── ...
   │   ├── auth
+  │   ├── api
   │   ├── stores
   │   ├── drizzle
-  │   ├── services
-  │   ├── drizzle
+  │   ├── middleware
   │   ├── zod
   │   ├── webhook.ts
   │   ├── email.ts
-  │   ├── database.ts
-  │   ├── api.ts
+  │   ├── ip.ts
+  │   ├── bcrypt.ts
   │   ├── stripe.ts
+  │   ├── types.ts
   │   └── ...
   ├── public
   ├── tests/casino
@@ -154,3 +163,6 @@ Small showcase of some features such as tilting card, audio visualizer and thund
 
 https://github.com/user-attachments/assets/250a19aa-0b7a-48ed-9dfb-a129b6cf737f
 
+### Hero (old)
+
+![image](https://github.com/user-attachments/assets/22fbdb42-f2cb-4324-8d61-39435530997d)
